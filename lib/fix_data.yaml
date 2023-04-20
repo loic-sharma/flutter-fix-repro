@@ -1,6 +1,6 @@
 version: 1
 transforms:
-  - title: "Replace null 'text' with empty string"
+  - title: "Migrate to empty 'text' string"
     date: 2023-04-19
     element:
       uris: [ 'services.dart' ]
@@ -16,6 +16,6 @@ transforms:
             argumentValue:
               expression: "''"
     variables:
-        text:
-          kind: 'fragment'
-          value: 'arguments[text]'
+      text:
+        kind: 'fragment'
+        value: 'arguments[text]'
