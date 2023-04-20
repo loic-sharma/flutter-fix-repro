@@ -1,0 +1,21 @@
+version: 1
+transforms:
+  - title: "Replace null 'text' with empty string"
+    date: 2023-04-19
+    element:
+      uris: [ 'services.dart' ]
+      constructor: ''
+      inClass: 'ClipboardData'
+    oneOf:
+      - if: "text == ''"
+        changes:
+          - kind: 'addParameter'
+            index: 0
+            name: 'text'
+            style: required_named
+            argumentValue:
+              expression: "''"
+    variables:
+        text:
+          kind: 'fragment'
+          value: 'arguments[text]'
