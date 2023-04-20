@@ -15,6 +15,16 @@ transforms:
             style: required_named
             argumentValue:
               expression: "''"
+      - if: "text == 'null'"
+        changes:
+          - kind: 'removeParameter'
+            name: 'text'
+          - kind: 'addParameter'
+            index: 0
+            name: 'text'
+            style: required_named
+            argumentValue:
+              expression: "''"
     variables:
       text:
         kind: 'fragment'
