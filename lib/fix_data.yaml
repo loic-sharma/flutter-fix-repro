@@ -1,31 +1,14 @@
 version: 1
 transforms:
   - title: "Migrate to empty 'text' string"
-    date: 2023-04-19
+    date: 2023-05-30
     element:
       uris: [ 'services.dart' ]
       constructor: ''
       inClass: 'ClipboardData'
-    oneOf:
-      - if: "text == ''"
-        changes:
-          - kind: 'addParameter'
-            index: 0
-            name: 'text'
-            style: required_named
-            argumentValue:
-              expression: "''"
-      - if: "text == 'null'"
-        changes:
-          - kind: 'removeParameter'
-            name: 'text'
-          - kind: 'addParameter'
-            index: 0
-            name: 'text'
-            style: required_named
-            argumentValue:
-              expression: "''"
-    variables:
-      text:
-        kind: 'fragment'
-        value: 'arguments[text]'
+    changes:
+      - kind: 'changeParameterType'
+        name: 'text'
+        nullability: 'non_null'
+        argumentValue:
+          expression: "''"
